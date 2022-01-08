@@ -1,16 +1,21 @@
+import React from 'react';
 import { rootPaths } from "./paths";
+
+const ViewHome = React.lazy(() =>
+  import('../pages/Home')
+);
 
 export const rootRoutes = [
   {
     path: rootPaths.home,
-    component: null,
+    component: ViewHome,
   },
   {
-    path: rootPaths.cart,
-    component: null,
+    path: rootPaths.checkout,
+    component: ViewHome,
   },
   {
     path: rootPaths.null,
-    component: null,
+    component: ViewHome,
   }
 ];

@@ -1,5 +1,5 @@
 export const rootPaths = {
   home: '/home',
-  cart: '/cart',
+  checkout: '/checkout',
   null: '*',
 };
