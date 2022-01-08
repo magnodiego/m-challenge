@@ -1,0 +1,29 @@
+@import "../../styles/custom.scss";
+
+.cartCard-container {
+  display: flex;
+  width: 100%;
+  padding: 20px 0;
+  border-bottom: 1px solid black;
+  justify-content: space-between;
+  align-items: center;
+
+  .cartCard-data-container {
+    display: flex;
+
+    img {
+      height: 100px;
+      margin-right: 10px; 
+    }
+
+    .cartCard-data {
+      span {
+        font-size: .8em;
+        color: $dark-gray;
+        font-weight: normal;
+      }
+    }
+  }
+
+  
+}

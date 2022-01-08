@@ -1,0 +1,11 @@
+.list-container {
+  width: 100%;
+
+  .list-products-contaier {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    row-gap: 50px;
+    column-gap: 50px;
+    margin-top: 20px;
+  }
+}
