@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
+import { selectItemsPerPage, selectPage } from '../../store/pagination/selector';
 import { selectProducts } from '../../store/products/selector';
 import CardContainer from '../Card/Card';
 import './List.scss';
@@ -7,20 +8,17 @@ import './List.scss';
 const List = () => {
 
   const productsList = useSelector(selectProducts);
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(12);
+  const page = useSelector(selectPage);
+  const itemsPerPage = useSelector(selectItemsPerPage);
 
   return (
     <div className='list-container'>
       <h3 className='text-uppercase'>Products</h3>
       <div className='list-products-contaier'>
         {productsList && productsList.length > 0 &&
-          productsList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((el, i) => {
-            console.log('el', el);
-            return(
-              <CardContainer element={el} key={i} />
-            );
-          })
+          productsList.slice((page-1) * itemsPerPage, (page-1) * itemsPerPage + itemsPerPage).map((el, i) => 
+            <CardContainer element={el} key={i} />
+          )
         }
       </div>
     </div>

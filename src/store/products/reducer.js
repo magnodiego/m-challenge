@@ -12,7 +12,6 @@ export const productsReducer = createReducer(initialState, builder =>
       state.isLoading = true;
     })
     .addCase(fetchProducts.fulfilled, (state, action) => {
-      console.log('action', action);
       state.isLoading = false;
       state.products = action.payload;
     })
