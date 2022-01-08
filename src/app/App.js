@@ -8,8 +8,8 @@ import './App.scss';
 function App() {
   return (
     <div className="App">
-      <Layout>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Layout>
           <React.Suspense fallback={null}>
             <Routes>
               <Route path="/" element={<Navigate to={rootPaths.home} />} />
@@ -22,8 +22,8 @@ function App() {
               )}
             </Routes>
           </React.Suspense>
-        </BrowserRouter>
-      </Layout>
+        </Layout>
+      </BrowserRouter>
     </div>
   );
 }

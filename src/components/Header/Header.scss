@@ -1,0 +1,39 @@
+@import "../../styles/custom.scss";
+
+.header-container {
+  padding: 10px 30px;
+  height: 90px;
+  background: linear-gradient(90deg, rgba(243,229,226,1) 0%, rgba(228,240,241,1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+
+  img {
+    width: 200px;
+    cursor: pointer;
+  }
+
+  .header-cart-container {
+    position: relative;
+    cursor: pointer;
+    img {
+      height: 40px;
+      width: 40px;
+      margin: 10px 20px 0;
+    }
+
+    div {
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      border-radius: 50%;
+      background-color: $primary;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      right: 15px;
+    }
+  }
+}
