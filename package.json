@@ -16,7 +16,16 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"lint:fix": "eslint ./src --ext .js,.jsx --fix"
+	},
+	"devDependencies": {
+    "@types/styled-components": "^5.1.16",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.27.1",
+    "node-sass": "^7.0.1",
+    "prettier": "^2.5.1"
   },
   "eslintConfig": {
     "extends": "react-app"
