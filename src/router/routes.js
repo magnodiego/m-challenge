@@ -2,7 +2,7 @@ import React from 'react';
 import { rootPaths } from "./paths";
 
 const ViewHome = React.lazy(() =>
-  import('../pages/Home')
+  import('../pages/Home/Home')
 );
 
 export const rootRoutes = [
