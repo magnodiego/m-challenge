@@ -13,7 +13,7 @@ export const cartReducer = createReducer(initialState, builder =>
     })
     .addCase(addItem, (state, action) => {
       state.cartItems = [
-        ...cartItems,
+        ...state.cartItems,
         action.payload.item
       ];
     })
