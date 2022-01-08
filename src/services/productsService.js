@@ -4,8 +4,7 @@ export const getProducts = () => {
   return new Promise((resolve, reject) => {
     api.get('amiibo')
       .then((res) => {
-        console.log(res);
-        resolve(true);
+        resolve(res.data);
       })
       .catch((err) => {
         reject(err);

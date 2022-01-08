@@ -6,12 +6,13 @@ export const initialState = {
   products: [],
 };
 
-export const cartReducer = createReducer(initialState, builder =>
+export const productsReducer = createReducer(initialState, builder =>
   builder
     .addCase(fetchProducts.pending, state => {
       state.isLoading = true;
     })
     .addCase(fetchProducts.fulfilled, (state, action) => {
+      console.log('action', action);
       state.isLoading = false;
       state.products = action.payload;
     })
