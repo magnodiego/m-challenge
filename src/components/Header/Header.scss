@@ -3,11 +3,11 @@
 .header-container {
   padding: 10px 30px;
   height: 90px;
-  background: linear-gradient(90deg, rgba(243,229,226,1) 0%, rgba(228,240,241,1) 100%);
+  background: linear-gradient(90deg, $light-primary 0%, $light-secondary 100%);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 
   img {
     width: 200px;
