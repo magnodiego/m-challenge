@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectCartTotalItems } from '../../store/cart/selector';
 import { toggleCart } from '../../store/cart/actions';
 import { useNavigate } from 'react-router-dom';
+import { rootPaths } from '../../router/paths';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const Header = () => {
   };
 
   const goHome = () => {
-    navigate('/home');
+    navigate(rootPaths.home);
   };
   
   return (
