@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { addItem, removeItem, toggleCart } from './actions';
+import { addItem, emptyCart, removeAllItemFor, removeItem, toggleCart } from './actions';
 
 export const initialState = {
   isOpen: false,
@@ -37,5 +37,15 @@ export const cartReducer = createReducer(initialState, builder =>
         state.cartItems = state.cartItems.filter((item) => `${item.head}${item.tail}` !== id);
       }
       state.totalItems = state.totalItems - 1;
+    })
+    .addCase(removeAllItemFor, (state, action) => {
+      const id = `${action.payload.item.head}${action.payload.item.tail}`;
+      const isRepeated = state.cartItems.find((item) => `${item.head}${item.tail}` === id);
+      state.totalItems = state.totalItems - isRepeated.count;
+      state.cartItems = state.cartItems.filter((item) => `${item.head}${item.tail}` !== id);
+    })
+    .addCase(emptyCart, (state) => {
+      state.cartItems = [];
+      state.totalItems = 0;
     })
 );

@@ -5,6 +5,10 @@ const ViewHome = React.lazy(() =>
   import('../pages/Home/Home')
 );
 
+const ViewCheckout = React.lazy(() =>
+  import('../pages/Checkout/Checkout')
+);
+
 export const rootRoutes = [
   {
     path: rootPaths.home,
@@ -12,7 +16,7 @@ export const rootRoutes = [
   },
   {
     path: rootPaths.checkout,
-    component: ViewHome,
+    component: ViewCheckout,
   },
   {
     path: rootPaths.null,

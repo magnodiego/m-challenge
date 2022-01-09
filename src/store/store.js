@@ -16,8 +16,13 @@ const store = configureStore({
 });
 
 store.subscribe(() => {
+  const cartState = store.getState().cartState;
+  const cartAlwaysClose = {
+    ...cartState,
+    isOpen: false
+  };
   saveStore({
-    cartState: store.getState().cartState
+    cartState: cartAlwaysClose
   });
 });
 

@@ -3,7 +3,7 @@
 .cartCard-container {
   display: flex;
   width: 100%;
-  padding: 20px 0;
+  padding: 10px 0;
   border-bottom: 1px solid black;
   justify-content: space-between;
   align-items: center;
@@ -26,12 +26,16 @@
   }
 
   .cartCard-controls {
+    display: flex;
+    flex-direction: column;
+    
     h4 {
       text-align: end;
     }
-    div {
-      span {
-        margin: 0 5px;
+
+    &>button {
+      &:last-child {
+        margin: 5px 0;
       }
     }
   }

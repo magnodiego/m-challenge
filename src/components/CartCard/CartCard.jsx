@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import './CartCard.scss';
 import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { addItem, removeItem } from '../../store/cart/actions';
+import { addItem, removeAllItemFor, removeItem } from '../../store/cart/actions';
 
-const CartCard = ({ product }) => {
+const CartCard = ({ product, isCart }) => {
   const dispatch = useDispatch();
 
   const addCartItem = () => {
@@ -16,22 +16,28 @@ const CartCard = ({ product }) => {
     dispatch(removeItem(product));
   };
 
+  const removeAllRepeatedItems = () => {
+    dispatch(removeAllItemFor(product));
+  };
+
   return(
     <div className='cartCard-container'>
       <div className='cartCard-data-container'>
-        <img src={product.image}/>
+        {isCart && <img src={product.image}/>}
         <div className='cartCard-data'>
           <span>{product.type}</span>
           <h6>{product.name}</h6>
+          {!isCart && <h6>{`$ ${product.price.toFixed(2)}`}</h6> }
         </div>
       </div>
       <div className='cartCard-controls'>
-        <h4>{`$ ${product.price.toFixed(2)}`}</h4>
+        {isCart && <h4>{`$ ${product.price.toFixed(2)}`}</h4> }
         <div>
           <Button onClick={removeCartItem}>-</Button>
           <span className='cartCard-item-count'> {product.count} </span>
           <Button onClick={addCartItem}>+</Button>
         </div>
+        {!isCart && <Button variant='outline-danger' onClick={removeAllRepeatedItems}>Remove</Button>}
       </div>
     </div>
   );
@@ -45,6 +51,7 @@ CartCard.propTypes = {
     price: PropTypes.number,
     count: PropTypes.number,
   }),
+  isCart: PropTypes.bool,
 };
 
 export default CartCard;

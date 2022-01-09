@@ -1,0 +1,18 @@
+.checkout-list-container {
+  h5 {
+    border-bottom: 1px solid black;
+  }
+
+  .checkout-list-products-contaier {
+
+    .checkout-list-total-container {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      h4 {
+        margin: 0 10px;
+      }
+    }
+  }
+}

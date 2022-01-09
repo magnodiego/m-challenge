@@ -1,9 +1,9 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import mercatLogo from '../../public/images/mercat-logo.png';
 import cartIcon from '../../public/icons/cart-icon.png';
 import './Header.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCartItems, selectCartTotalItems } from '../../store/cart/selector';
+import { selectCartTotalItems } from '../../store/cart/selector';
 import { toggleCart } from '../../store/cart/actions';
 import { useNavigate } from 'react-router-dom';
 

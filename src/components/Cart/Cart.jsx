@@ -6,12 +6,14 @@ import closeIcon from '../../public/icons/close-icon.png';
 import './Cart.scss';
 import { Button } from 'react-bootstrap';
 import CartCard from '../CartCard/CartCard';
+import { useNavigate } from 'react-router-dom';
 
 const CartModal = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector(selectCartIsOpen);
   const cartItems = useSelector(selectCartItems);
   const [isClosing, setIsClosing] = useState(false);
+  const navigate = useNavigate();
 
   const totalAmount = useMemo(() => {
     return cartItems.reduce((total, product) => {
@@ -29,6 +31,11 @@ const CartModal = () => {
     }
   };
 
+  const goToCheckout = () => {
+    dispatch(toggleCart());
+    navigate('/checkout');
+  };
+
   return(
     isOpen ?
       <React.Fragment>
@@ -40,23 +47,23 @@ const CartModal = () => {
           </div>
           <div className={`cart-modal-body ${cartItems.length === 0 ? 'no-items' : '' }`}>
             {cartItems && cartItems.length > 0 ?
-              cartItems.map((product, i) => 
-                <CartCard product={product} key={i} />
-              )
+              <React.Fragment>
+                {cartItems.map((product, i) => 
+                  <CartCard product={product} key={i} isCart />
+                )}
+                <h4>
+                  {`Total: $ ${totalAmount}`}
+                </h4>
+              </React.Fragment>
               :
               <p className='cart-modal-body-empty'>
                 Your cart is empty
               </p>
             }
-            {cartItems && cartItems.length > 0 &&
-              <h4>
-                {`Total: $ ${totalAmount}`}
-              </h4>
-            }
           </div>
           <div className='cart-modal-footer'>
             {cartItems && cartItems.length > 0 ?
-              <Button variant="primary"> Checkout </Button>
+              <Button variant="primary" onClick={goToCheckout}> Checkout </Button>
               :
               <Button variant="outline-primary" onClick={handleOpenCart}> Continue shopping </Button>
             }
