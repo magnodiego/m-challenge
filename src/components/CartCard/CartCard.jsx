@@ -7,6 +7,7 @@ import { addItem, removeAllItemFor, removeItem } from '../../store/cart/actions'
 
 const CartCard = ({ product, isCart }) => {
   const dispatch = useDispatch();
+  const {image, type, name, price, count} = product;
 
   const addCartItem = () => {
     dispatch(addItem(product));
@@ -23,18 +24,18 @@ const CartCard = ({ product, isCart }) => {
   return(
     <div className='cartCard'>
       <div className='cartCard__data__container'>
-        {isCart && <img src={product.image}/>}
+        {isCart && <img src={image}/>}
         <div className='cartCard__data'>
-          <span>{product.type}</span>
-          <h6>{product.name}</h6>
-          {!isCart && <h6>{`$ ${product.price.toFixed(2)}`}</h6> }
+          <span>{type}</span>
+          <h6>{name}</h6>
+          {!isCart && <h6>{`$ ${price.toFixed(2)}`}</h6> }
         </div>
       </div>
       <div className='cartCard__controls'>
-        {isCart && <h4>{`$ ${product.price.toFixed(2)}`}</h4> }
+        {isCart && <h4>{`$ ${price.toFixed(2)}`}</h4> }
         <div>
           <Button onClick={removeCartItem}>-</Button>
-          <span> {product.count} </span>
+          <span> {count} </span>
           <Button onClick={addCartItem}>+</Button>
         </div>
         {!isCart && <Button variant='outline-danger' onClick={removeAllRepeatedItems}>Remove</Button>}

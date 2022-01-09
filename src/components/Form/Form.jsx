@@ -5,19 +5,66 @@ import './Form.scss';
 import FormItem from '../FormItem/FormItem';
 import { validateFields } from '../../utils/form';
 
+const formConstants = {
+  name: {
+    id: 'name',
+    label: 'Name',
+    placeholder: 'Enter your name.',
+    className: 'form__item__input'
+  },
+  surname: {
+    id: 'surname',
+    label: 'Surname',
+    placeholder: 'Enter your surname.',
+    className: 'form__item__input'
+  },
+  address: {
+    id: 'address',
+    label: 'Address',
+    placeholder: 'Enter your address.',
+    className: 'form__item__input'
+  },
+  card: {
+    id: 'card',
+    label: 'Card number',
+    placeholder: '5555 5555 5555 5555',
+    className: 'form__item__input',
+    max: 16,
+  },
+  expiry: {
+    id: 'expiry',
+    label: 'Expiry date',
+    placeholder: 'MM/YY',
+    className: 'form__item__input',
+    max: 5,
+  },
+  cvc: {
+    id: 'cvc',
+    label: 'CVC',
+    placeholder: '000',
+    className: 'form__item__input',
+    max: 4,
+    min: 3,
+  }
+};
+
 const Form  = ({ handlePaying, totalAmount, handleModal }) => {
 
   const [values, setValue] = useState({
     name: '',
     surname: '',
     address: '',
-    phone: '',
+    card: '',
+    expiry: '',
+    cvc: '',
   });
   const [errors, setErrors] = useState({
     name: '',
     surname: '',
     address: '',
-    phone: '',
+    card: '',
+    expiry: '',
+    cvc: '',
   });
 
   const handleChange = (id, val) => {
@@ -69,10 +116,14 @@ const Form  = ({ handlePaying, totalAmount, handleModal }) => {
         <Button onClick={handlePaying}> Cancel </Button>
       </div>
       <div className='form__body'>
-        <FormItem id='name' label='Name' type='text' className='form__item__input' placeholder='Enter your name.' value={values.name} onChange={handleChange} error={errors.name} />
-        <FormItem id='surname' label='Surname' type='text' className='form__item__input' placeholder='Enter your surname.' value={values.surname} onChange={handleChange} error={errors.surname} />
-        <FormItem id='address' label='Address' type='text' className='form__item__input' placeholder='Enter your address.' value={values.address} onChange={handleChange} error={errors.address} />
-        <FormItem id='phone' label='Phone number' type='text' className='form__item__input' placeholder='(123) 456-7890' value={values.phone} onChange={handleChange} error={errors.phone} />
+        <FormItem id={formConstants.name.id} label={formConstants.name.label} type='text' className={formConstants.name.className} placeholder={formConstants.name.placeholder} value={values.name} onChange={handleChange} error={errors.name} />
+        <FormItem id={formConstants.surname.id} label={formConstants.surname.label} type='text' className={formConstants.surname.className} placeholder={formConstants.surname.placeholder} value={values.surname} onChange={handleChange} error={errors.surname} />
+        <FormItem id={formConstants.address.id} label={formConstants.address.label} type='text' className={formConstants.address.className} placeholder={formConstants.address.placeholder} value={values.address} onChange={handleChange} error={errors.address} />
+        <FormItem id={formConstants.card.id} label={formConstants.card.label} type='text' className={formConstants.card.className} placeholder={formConstants.card.placeholder} max={formConstants.card.max} value={values.card} onChange={handleChange} error={errors.card} />
+        <div className='form__body__cardInfo'>
+          <FormItem id={formConstants.expiry.id} label={formConstants.expiry.label} type='text' className={formConstants.expiry.className} placeholder={formConstants.expiry.placeholder} max={formConstants.expiry.max} value={values.expiry} onChange={handleChange} error={errors.expiry} />
+          <FormItem id={formConstants.cvc.id} label={formConstants.cvc.label} type='text' className={formConstants.cvc.className} placeholder={formConstants.cvc.placeholder} max={formConstants.cvc.max} min={formConstants.cvc.min} value={values.cvc} onChange={handleChange} error={errors.cvc} />
+        </div>
       </div>
       <Button onClick={setOrder}>{`Set order $ ${totalAmount}`}</Button>
     </div>

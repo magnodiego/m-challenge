@@ -7,6 +7,7 @@ import './Cart.scss';
 import { Button } from 'react-bootstrap';
 import CartCard from '../CartCard/CartCard';
 import { useNavigate } from 'react-router-dom';
+import { rootPaths } from '../../router/paths';
 
 const CartModal = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const CartModal = () => {
 
   const goToCheckout = () => {
     dispatch(toggleCart());
-    navigate('/checkout');
+    navigate(rootPaths.checkout);
   };
 
   return(

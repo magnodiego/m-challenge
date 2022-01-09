@@ -1,7 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import CartCard from '../../components/CartCard/CartCard';
 import CheckoutList from '../../components/CheckoutList/CheckoutList';
 import Form from '../../components/Form/Form';
 import SubmitModal from '../../components/SubmitModal/SubmitModal';
@@ -26,6 +24,12 @@ const Checkout = () => {
   const handleModal = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    if(cartItems.length === 0){
+      setIsPaying(false);
+    }
+  }, [cartItems]);
 
   return (
     <div className='checkout'>

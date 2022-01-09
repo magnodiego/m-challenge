@@ -4,6 +4,7 @@ import { Button, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { emptyCart } from '../../store/cart/actions';
 import { useDispatch } from 'react-redux';
+import { rootPaths } from '../../router/paths';
 
 const SubmitModal = ({ isOpen }) => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const SubmitModal = ({ isOpen }) => {
 
   const handleClose = () => {
     dispatch(emptyCart());
-    navigate('/home');
+    navigate(rootPaths.home);
   };
 
   return (

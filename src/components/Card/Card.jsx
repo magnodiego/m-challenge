@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 
 const CardContainer = ({ product }) => {
   const dispatch = useDispatch();
+  const {image, type, name, price} = product;
 
   const addCartItem = () => {
     dispatch(addItem(product));
@@ -14,12 +15,12 @@ const CardContainer = ({ product }) => {
 
   return(
     <div className='card'> 
-      <img src={product.image} alt='product-image' />
+      <img src={image} alt='product-image' />
       <div className='card__data'>
         <div>
-          <span>{product.type}</span>
-          <h4>{product.name}</h4>
-          <h5>{`$ ${product.price.toFixed(2)}`}</h5>
+          <span>{type}</span>
+          <h4>{name}</h4>
+          <h5>{`$ ${price.toFixed(2)}`}</h5>
         </div>
         <Button variant='primary' onClick={addCartItem}>Add to cart</Button>
       </div>

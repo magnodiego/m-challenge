@@ -1,9 +1,15 @@
+// Colors
 $primary: #F26144;
 $secondary: #5ED2DB;
 $light-primary: #f3e5e2;
 $light-secondary:  #e4f0f1;
 $dark-gray: #5f5f5f;
 $danger: #DC3545;
+
+// Breakpoints
+$s-breakpoint: '540px';
+$m-breakpoint: '768px';
+$l-breakpoint: '1200px';
 
 $theme-colors: (
     "primary": $primary,
