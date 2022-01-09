@@ -20,6 +20,7 @@ function App() {
                   element={<route.component/>}
                 />
               )}
+              <Route path='*' element={<Navigate to={rootPaths.home} />} />
             </Routes>
           </React.Suspense>
         </Layout>
