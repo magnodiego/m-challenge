@@ -4,7 +4,8 @@ import { selectItemsPerPage, selectPage } from '../../store/pagination/selector'
 import { selectProducts } from '../../store/products/selector';
 import { Pagination } from 'react-bootstrap';
 import './Pagination.scss';
-import { setPage } from '../../store/pagination/actions';
+import { setPage, nextPage, previousPage } from '../../store/pagination/actions';
+import PaginationItem from '../PaginationItem/PaginationItem';
 
 const PaginationHandler = () => {
   const dispatch = useDispatch();
@@ -31,37 +32,13 @@ const PaginationHandler = () => {
   }, [products, itemsPerPage, currentPage]);
 
 
-  const handlePage = (page) => {
-    dispatch(setPage(page));
-  };
+
 
   return (
     <div className='pagination-container'>
       <Pagination>
         {totalPages && totalPages.map((page, i) =>
-          <React.Fragment key={i}>
-            {currentPage!== 1 && i === 0 &&
-              <React.Fragment>
-                <Pagination.Prev onClick={() => handlePage(currentPage - 1)}/> 
-              </React.Fragment>
-            }
-
-            {i === 1 && currentPage - 3 > 1 &&
-              <Pagination.Ellipsis onClick={() => handlePage(currentPage - 3)}/>
-            }
-
-            {i === totalPages.length - 1 && currentPage + 3 < lastPage &&
-              <Pagination.Ellipsis onClick={() => handlePage(currentPage + 3)}/>
-            }
-
-            <Pagination.Item onClick={() => handlePage(page)} active={currentPage === page} >{page}</Pagination.Item>
-
-            {currentPage !== lastPage && i === totalPages.length - 1 &&
-              <React.Fragment>
-                <Pagination.Next onClick={() => handlePage(currentPage + 1)}/> 
-              </React.Fragment>
-            }
-          </React.Fragment>
+          <PaginationItem key={i} page={page} index={i} totalPages={totalPages} lastPage={lastPage} />
         )}
       </Pagination>
     </div>

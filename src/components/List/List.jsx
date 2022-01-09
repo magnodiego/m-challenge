@@ -16,8 +16,8 @@ const List = () => {
       <h3 className='text-uppercase'>Products</h3>
       <div className='list-products-contaier'>
         {productsList && productsList.length > 0 &&
-          productsList.slice((page-1) * itemsPerPage, (page-1) * itemsPerPage + itemsPerPage).map((el, i) => 
-            <CardContainer element={el} key={i} />
+          productsList.slice((page-1) * itemsPerPage, (page-1) * itemsPerPage + itemsPerPage).map((product, i) => 
+            <CardContainer product={product} key={i} />
           )
         }
       </div>

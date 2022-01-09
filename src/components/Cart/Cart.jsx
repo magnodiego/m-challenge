@@ -11,43 +11,37 @@ const CartModal = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector(selectCartIsOpen);
   const cartItems = useSelector(selectCartItems);
-  const [close, setClose] = useState(true);
+  const [isClosing, setIsClosing] = useState(false);
 
   const totalAmount = useMemo(() => {
-    return cartItems.reduce((total, el, i) => {
+    return cartItems.reduce((total, el) => {
       return total + el.price;
     }, 0).toFixed(2);
   }, [cartItems]);
 
-  useEffect(() => {
-    if(!isOpen){
-      setTimeout(() => {
-        setClose(true);
-      }, 300);
-    } else {
-      setClose(false);
-    }
-  }, [isOpen]);
-
   const handleOpenCart = () => {
-    if(isOpen){
-      dispatch(toggleCart());
+    if(!isClosing){
+      setIsClosing(true);
+      setTimeout(() => {
+        setIsClosing(false);
+        dispatch(toggleCart());
+      }, 300);
     }
   };
 
   return(
-    !close ?
+    isOpen ?
       <React.Fragment>
-        <div className={`cart-modal-backdrop ${!isOpen ? 'close' : 'open'}`} onClick={handleOpenCart}/>
-        <div className={`cart-modal ${!isOpen ? 'close' : 'open'}`}>
+        <div className={`cart-modal-backdrop ${isClosing ? 'close' : 'open'}`} onClick={handleOpenCart}/>
+        <div className={`cart-modal ${isClosing ? 'close' : 'open'}`}>
           <div className='cart-modal-header'>
             <h2> My Cart </h2>
             <img className='cart-modal-close' src={closeIcon} alt='close-icon' onClick={handleOpenCart}/>
           </div>
           <div className={`cart-modal-body ${cartItems.length === 0 ? 'no-items' : '' }`}>
             {cartItems && cartItems.length > 0 ?
-              cartItems.map((el, i) => 
-                <CartCard element={el} key={i} />
+              cartItems.map((product, i) => 
+                <CartCard product={product} key={i} />
               )
               :
               <p className='cart-modal-body-empty'>

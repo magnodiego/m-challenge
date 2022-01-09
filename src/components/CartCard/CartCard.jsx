@@ -2,19 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './CartCard.scss';
 
-const CartCard = ({element}) => {
+const CartCard = ({ product }) => {
 
   return(
     <div className='cartCard-container'>
       <div className='cartCard-data-container'>
-        <img src={element.image}/>
+        <img src={product.image}/>
         <div className='cartCard-data'>
-          <span>{element.type}</span>
-          <h6>{element.name}</h6>
+          <span>{product.type}</span>
+          <h6>{product.name}</h6>
         </div>
       </div>
       <div className='cartCard-controls'>
-        <h4>{`$ ${element.price.toFixed(2)}`}</h4>
+        <h4>{`$ ${product.price.toFixed(2)}`}</h4>
 
       </div>
     </div>
@@ -22,7 +22,7 @@ const CartCard = ({element}) => {
 };
 
 CartCard.propTypes = {
-  element: PropTypes.shape({
+  product: PropTypes.shape({
     image: PropTypes.string,
     type: PropTypes.string,
     name: PropTypes.string,
