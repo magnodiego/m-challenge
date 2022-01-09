@@ -16,9 +16,11 @@ const CardContainer = ({ product }) => {
     <div className='card-container'> 
       <img src={product.image} alt='product-image' />
       <div className='card-data'>
-        <span>{product.type}</span>
-        <h4>{product.name}</h4>
-        <h5>{`$ ${product.price.toFixed(2)}`}</h5>
+        <div>
+          <span>{product.type}</span>
+          <h4>{product.name}</h4>
+          <h5>{`$ ${product.price.toFixed(2)}`}</h5>
+        </div>
         <Button variant='primary' onClick={addCartItem}>Add to cart</Button>
       </div>
     </div>
