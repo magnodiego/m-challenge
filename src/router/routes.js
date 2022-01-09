@@ -18,8 +18,4 @@ export const rootRoutes = [
     path: rootPaths.checkout,
     component: ViewCheckout,
   },
-  {
-    path: rootPaths.null,
-    component: ViewHome,
-  }
 ];
