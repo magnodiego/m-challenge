@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 const CardContainer = ({ product }) => {
   const dispatch = useDispatch();
 
-  const addItemToCart = () => {
+  const addCartItem = () => {
     dispatch(addItem(product));
   };
 
@@ -19,7 +19,7 @@ const CardContainer = ({ product }) => {
         <span>{product.type}</span>
         <h4>{product.name}</h4>
         <h5>{`$ ${product.price.toFixed(2)}`}</h5>
-        <Button variant='primary' onClick={addItemToCart}>Add to cart</Button>
+        <Button variant='primary' onClick={addCartItem}>Add to cart</Button>
       </div>
     </div>
   );

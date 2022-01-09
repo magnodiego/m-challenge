@@ -1,8 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './CartCard.scss';
+import { Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { addItem, removeItem } from '../../store/cart/actions';
 
 const CartCard = ({ product }) => {
+  const dispatch = useDispatch();
+
+  const addCartItem = () => {
+    dispatch(addItem(product));
+  };
+
+  const removeCartItem = () => {
+    dispatch(removeItem(product));
+  };
 
   return(
     <div className='cartCard-container'>
@@ -15,7 +27,11 @@ const CartCard = ({ product }) => {
       </div>
       <div className='cartCard-controls'>
         <h4>{`$ ${product.price.toFixed(2)}`}</h4>
-
+        <div>
+          <Button onClick={removeCartItem}>-</Button>
+          <span className='cartCard-item-count'> {product.count} </span>
+          <Button onClick={addCartItem}>+</Button>
+        </div>
       </div>
     </div>
   );
@@ -27,6 +43,7 @@ CartCard.propTypes = {
     type: PropTypes.string,
     name: PropTypes.string,
     price: PropTypes.number,
+    count: PropTypes.number,
   }),
 };
 

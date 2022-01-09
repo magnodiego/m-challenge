@@ -14,8 +14,8 @@ const CartModal = () => {
   const [isClosing, setIsClosing] = useState(false);
 
   const totalAmount = useMemo(() => {
-    return cartItems.reduce((total, el) => {
-      return total + el.price;
+    return cartItems.reduce((total, product) => {
+      return total + product.price * product.count;
     }, 0).toFixed(2);
   }, [cartItems]);
 

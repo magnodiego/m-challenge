@@ -10,6 +10,7 @@ const PaginationHandler = () => {
   const currentPage = useSelector(selectPage);
   const products = useSelector(selectProducts);
   const itemsPerPage = useSelector(selectItemsPerPage);
+  const siblings = 3;
 
   const lastPage = useMemo(() => {
     return Math.ceil(products.length/itemsPerPage);
@@ -19,7 +20,7 @@ const PaginationHandler = () => {
     const pages = [];
     
     for (let i = 1; i <= lastPage; i++) {
-      if((currentPage - i > -3 && currentPage - i <= 0) || (currentPage - i < 3 && currentPage - i >= 0)){
+      if((currentPage - i > -siblings && currentPage - i <= 0) || (currentPage - i < siblings && currentPage - i >= 0)){
         pages.push(i);
       } else if (i === 1 || i === lastPage) {
         pages.push(i);
@@ -33,7 +34,7 @@ const PaginationHandler = () => {
     <div className='pagination-container'>
       <Pagination>
         {totalPages && totalPages.map((page, i) =>
-          <PaginationItem key={i} page={page} index={i} totalPages={totalPages} lastPage={lastPage} />
+          <PaginationItem key={i} page={page} index={i} totalPages={totalPages} lastPage={lastPage} siblings={siblings}/>
         )}
       </Pagination>
     </div>

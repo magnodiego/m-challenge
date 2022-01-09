@@ -5,16 +5,16 @@ import { selectPage } from '../../store/pagination/selector';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPage } from '../../store/pagination/actions';
 
-const PaginationItem = ({page, index, totalPages, lastPage}) => {
+const PaginationItem = ({page, index, totalPages, lastPage, siblings}) => {
   const dispatch = useDispatch();
   const currentPage = useSelector(selectPage);
 
   const handleNextThree = () => {
-    dispatch(setPage(currentPage + 3));
+    dispatch(setPage(currentPage + siblings));
   };
 
   const handlePrevThree = () => {
-    dispatch(setPage(currentPage - 3));
+    dispatch(setPage(currentPage - siblings));
   };
 
   const handleNextPage = () => {
@@ -37,11 +37,11 @@ const PaginationItem = ({page, index, totalPages, lastPage}) => {
         </React.Fragment>
       }
 
-      {index === 1 && currentPage - 3 > 1 &&
+      {index === 1 && currentPage - siblings > 1 &&
         <Pagination.Ellipsis onClick={handlePrevThree}/>
       }
 
-      {index === totalPages.length - 1 && currentPage + 3 < lastPage &&
+      {index === totalPages.length - 1 && currentPage + siblings < lastPage &&
         <Pagination.Ellipsis onClick={handleNextThree}/>
       }
 
@@ -58,7 +58,8 @@ PaginationItem.propTypes = {
   page: PropTypes.number,
   index: PropTypes.number,
   totalPages: PropTypes.array,
-  lastPage: PropTypes.number
+  lastPage: PropTypes.number,
+  siblings: PropTypes.number,
 };
 
 export default PaginationItem;
