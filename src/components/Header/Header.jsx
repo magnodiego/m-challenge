@@ -3,13 +3,13 @@ import mercatLogo from '../../public/images/mercat-logo.png';
 import cartIcon from '../../public/icons/cart-icon.png';
 import './Header.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCartItems } from '../../store/cart/selector';
+import { selectCartTotalItems } from '../../store/cart/selector';
 import { toggleCart } from '../../store/cart/actions';
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const dispatch = useDispatch();
-  const cartItems = useSelector(selectCartItems);
+  const totalItems = useSelector(selectCartTotalItems);
   const navigate = useNavigate();
 
   const handleOpenCart = () => {
@@ -21,13 +21,13 @@ const Header = () => {
   };
   
   return (
-    <div className='header-container'>
+    <div className='header'>
       <img src={mercatLogo} alt='mercat-logo' onClick={goHome}/>
-      <div className='header-cart-container' onClick={handleOpenCart}>
+      <div className='header__cart' onClick={handleOpenCart}>
         <img src={cartIcon} alt='cart-icon' />
-        {cartItems && cartItems.length > 0 &&
+        {totalItems > 0 &&
           <div>
-            {cartItems.length}
+            {totalItems}
           </div>
         }
       </div>  

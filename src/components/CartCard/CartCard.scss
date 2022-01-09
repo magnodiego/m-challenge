@@ -1,14 +1,14 @@
 @import "../../styles/custom.scss";
 
-.cartCard-container {
+.cartCard {
   display: flex;
   width: 100%;
-  padding: 20px 0;
+  padding: 10px 0;
   border-bottom: 1px solid black;
   justify-content: space-between;
   align-items: center;
 
-  .cartCard-data-container {
+  .cartCard__data__container {
     display: flex;
 
     img {
@@ -16,7 +16,7 @@
       margin-right: 10px; 
     }
 
-    .cartCard-data {
+    .cartCard__data {
       span {
         font-size: .8em;
         color: $dark-gray;
@@ -25,5 +25,18 @@
     }
   }
 
-  
+  .cartCard__controls {
+    display: flex;
+    flex-direction: column;
+    
+    h4 {
+      text-align: end;
+    }
+
+    &>button {
+      &:last-child {
+        margin: 5px 0;
+      }
+    }
+  }
 }

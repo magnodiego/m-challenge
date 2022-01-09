@@ -1,9 +1,11 @@
-.pagination-container {
+.pagination {
   padding: 40px 20px;
   display: flex;
   justify-content: center;
 
-  .pagination-item {
-    padding: 10px;
+  @media only screen and (max-width: 540px) {
+    .page-link {
+      padding: 0.1rem 0.5rem;
+    }
   }
 }

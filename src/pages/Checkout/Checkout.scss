@@ -1,0 +1,17 @@
+.checkout {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  flex-direction: column;
+
+  h3 {
+    align-self: start;
+    margin-bottom: 30px;
+  }
+
+  .checkout__list__container {
+    width: 80%;
+  }
+}

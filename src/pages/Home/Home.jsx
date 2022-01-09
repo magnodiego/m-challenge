@@ -17,7 +17,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className='home-container'>
+    <div className='home'>
       {isLoadingProducts ?
         <Spinner animation="border" />
         :

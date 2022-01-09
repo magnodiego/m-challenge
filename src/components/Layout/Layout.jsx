@@ -3,13 +3,13 @@ import CartModal from "../Cart/Cart";
 import PropTypes from 'prop-types';
 import Header from '../Header/Header';
 
-const Layout = (props) => {
+const Layout = ({ children }) => {
 
   return (
     <div className='layout'>
       <CartModal />
       <Header />
-      {props.children}
+      {children}
     </div>
   );
 };

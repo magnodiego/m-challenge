@@ -6,63 +6,64 @@ import closeIcon from '../../public/icons/close-icon.png';
 import './Cart.scss';
 import { Button } from 'react-bootstrap';
 import CartCard from '../CartCard/CartCard';
+import { useNavigate } from 'react-router-dom';
 
 const CartModal = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector(selectCartIsOpen);
   const cartItems = useSelector(selectCartItems);
-  const [close, setClose] = useState(true);
+  const [isClosing, setIsClosing] = useState(false);
+  const navigate = useNavigate();
 
   const totalAmount = useMemo(() => {
-    return cartItems.reduce((total, el, i) => {
-      return total + el.price;
+    return cartItems.reduce((total, product) => {
+      return total + product.price * product.count;
     }, 0).toFixed(2);
   }, [cartItems]);
 
-  useEffect(() => {
-    if(!isOpen){
-      setTimeout(() => {
-        setClose(true);
-      }, 300);
-    } else {
-      setClose(false);
-    }
-  }, [isOpen]);
-
   const handleOpenCart = () => {
-    if(isOpen){
-      dispatch(toggleCart());
+    if(!isClosing){
+      setIsClosing(true);
+      setTimeout(() => {
+        setIsClosing(false);
+        dispatch(toggleCart());
+      }, 300);
     }
   };
 
+  const goToCheckout = () => {
+    dispatch(toggleCart());
+    navigate('/checkout');
+  };
+
   return(
-    !close ?
+    isOpen ?
       <React.Fragment>
-        <div className={`cart-modal-backdrop ${!isOpen ? 'close' : 'open'}`} onClick={handleOpenCart}/>
-        <div className={`cart-modal ${!isOpen ? 'close' : 'open'}`}>
-          <div className='cart-modal-header'>
+        <div className={`cart__backdrop ${isClosing ? 'close' : 'open'}`} onClick={handleOpenCart}/>
+        <div className={`cart ${isClosing ? 'close' : 'open'}`}>
+          <div className='cart__header'>
             <h2> My Cart </h2>
-            <img className='cart-modal-close' src={closeIcon} alt='close-icon' onClick={handleOpenCart}/>
+            <img className='cart__close' src={closeIcon} alt='close-icon' onClick={handleOpenCart}/>
           </div>
-          <div className={`cart-modal-body ${cartItems.length === 0 ? 'no-items' : '' }`}>
+          <div className={`cart__body ${cartItems.length === 0 ? 'no-items' : '' }`}>
             {cartItems && cartItems.length > 0 ?
-              cartItems.map((el, i) => 
-                <CartCard element={el} key={i} />
-              )
+              <React.Fragment>
+                {cartItems.map((product, i) => 
+                  <CartCard product={product} key={i} isCart />
+                )}
+                <h4>
+                  {`Total: $ ${totalAmount}`}
+                </h4>
+              </React.Fragment>
               :
-              <p className='cart-modal-body-empty'>
+              <p>
                 Your cart is empty
               </p>
             }
-            {cartItems && cartItems.length > 0 &&
-              <h4>
-                {`Total: $ ${totalAmount}`}
-              </h4>
-            }
           </div>
-          <div className='cart-modal-footer'>
+          <div className='cart__footer'>
             {cartItems && cartItems.length > 0 ?
-              <Button variant="primary"> Checkout </Button>
+              <Button variant="primary" onClick={goToCheckout}> Checkout </Button>
               :
               <Button variant="outline-primary" onClick={handleOpenCart}> Continue shopping </Button>
             }
