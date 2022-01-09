@@ -21,9 +21,9 @@ const Header = () => {
   };
   
   return (
-    <div className='header-container'>
+    <div className='header'>
       <img src={mercatLogo} alt='mercat-logo' onClick={goHome}/>
-      <div className='header-cart-container' onClick={handleOpenCart}>
+      <div className='header__cart' onClick={handleOpenCart}>
         <img src={cartIcon} alt='cart-icon' />
         {totalItems > 0 &&
           <div>

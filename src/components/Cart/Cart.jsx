@@ -39,13 +39,13 @@ const CartModal = () => {
   return(
     isOpen ?
       <React.Fragment>
-        <div className={`cart-modal-backdrop ${isClosing ? 'close' : 'open'}`} onClick={handleOpenCart}/>
-        <div className={`cart-modal ${isClosing ? 'close' : 'open'}`}>
-          <div className='cart-modal-header'>
+        <div className={`cart__backdrop ${isClosing ? 'close' : 'open'}`} onClick={handleOpenCart}/>
+        <div className={`cart ${isClosing ? 'close' : 'open'}`}>
+          <div className='cart__header'>
             <h2> My Cart </h2>
-            <img className='cart-modal-close' src={closeIcon} alt='close-icon' onClick={handleOpenCart}/>
+            <img className='cart__close' src={closeIcon} alt='close-icon' onClick={handleOpenCart}/>
           </div>
-          <div className={`cart-modal-body ${cartItems.length === 0 ? 'no-items' : '' }`}>
+          <div className={`cart__body ${cartItems.length === 0 ? 'no-items' : '' }`}>
             {cartItems && cartItems.length > 0 ?
               <React.Fragment>
                 {cartItems.map((product, i) => 
@@ -56,12 +56,12 @@ const CartModal = () => {
                 </h4>
               </React.Fragment>
               :
-              <p className='cart-modal-body-empty'>
+              <p>
                 Your cart is empty
               </p>
             }
           </div>
-          <div className='cart-modal-footer'>
+          <div className='cart__footer'>
             {cartItems && cartItems.length > 0 ?
               <Button variant="primary" onClick={goToCheckout}> Checkout </Button>
               :

@@ -12,9 +12,9 @@ const List = () => {
   const itemsPerPage = useSelector(selectItemsPerPage);
 
   return (
-    <div className='list-container'>
+    <div className='list'>
       <h3 className='text-uppercase'>Products</h3>
-      <div className='list-products-contaier'>
+      <div className='list__products'>
         {productsList && productsList.length > 0 &&
           productsList.slice((page-1) * itemsPerPage, (page-1) * itemsPerPage + itemsPerPage).map((product, i) => 
             <CardContainer product={product} key={i} />

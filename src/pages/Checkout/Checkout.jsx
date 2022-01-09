@@ -28,10 +28,10 @@ const Checkout = () => {
   };
 
   return (
-    <div className='checkout-container'>
+    <div className='checkout'>
       <SubmitModal isOpen={isOpen} />
       <h3 className='text-uppercase'>Checkout</h3>
-      <div className='checkout-list'>
+      <div className='checkout__list__container'>
         <CheckoutList handlePaying={handlePaying} isPaying={isPaying} totalAmount={totalAmount} />
       </div>
       {isPaying &&

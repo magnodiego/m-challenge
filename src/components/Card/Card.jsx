@@ -13,9 +13,9 @@ const CardContainer = ({ product }) => {
   };
 
   return(
-    <div className='card-container'> 
+    <div className='card'> 
       <img src={product.image} alt='product-image' />
-      <div className='card-data'>
+      <div className='card__data'>
         <div>
           <span>{product.type}</span>
           <h4>{product.name}</h4>

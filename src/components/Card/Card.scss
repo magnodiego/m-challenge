@@ -1,6 +1,6 @@
 @import "../../styles/custom.scss";
 
-.card-container {
+.card {
   width: 100%;
   display: grid;
   align-items: center;
@@ -18,7 +18,7 @@
     padding: 10px;
   }
 
-  .card-data {
+  .card__data {
     height: 100%;
     width: 100%;
     padding-top: 5px;

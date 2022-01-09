@@ -31,7 +31,7 @@ const PaginationHandler = () => {
   }, [products, itemsPerPage, currentPage]);
 
   return (
-    <div className='pagination-container'>
+    <div className='pagination'>
       <Pagination>
         {totalPages && totalPages.map((page, i) =>
           <PaginationItem key={i} page={page} index={i} totalPages={totalPages} lastPage={lastPage} siblings={siblings}/>

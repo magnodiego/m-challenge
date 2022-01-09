@@ -1,6 +1,6 @@
 @import "../../styles/custom.scss";
 
-.cartCard-container {
+.cartCard {
   display: flex;
   width: 100%;
   padding: 10px 0;
@@ -8,7 +8,7 @@
   justify-content: space-between;
   align-items: center;
 
-  .cartCard-data-container {
+  .cartCard__data__container {
     display: flex;
 
     img {
@@ -16,7 +16,7 @@
       margin-right: 10px; 
     }
 
-    .cartCard-data {
+    .cartCard__data {
       span {
         font-size: .8em;
         color: $dark-gray;
@@ -25,7 +25,7 @@
     }
   }
 
-  .cartCard-controls {
+  .cartCard__controls {
     display: flex;
     flex-direction: column;
     

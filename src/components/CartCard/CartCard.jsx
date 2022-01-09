@@ -21,20 +21,20 @@ const CartCard = ({ product, isCart }) => {
   };
 
   return(
-    <div className='cartCard-container'>
-      <div className='cartCard-data-container'>
+    <div className='cartCard'>
+      <div className='cartCard__data__container'>
         {isCart && <img src={product.image}/>}
-        <div className='cartCard-data'>
+        <div className='cartCard__data'>
           <span>{product.type}</span>
           <h6>{product.name}</h6>
           {!isCart && <h6>{`$ ${product.price.toFixed(2)}`}</h6> }
         </div>
       </div>
-      <div className='cartCard-controls'>
+      <div className='cartCard__controls'>
         {isCart && <h4>{`$ ${product.price.toFixed(2)}`}</h4> }
         <div>
           <Button onClick={removeCartItem}>-</Button>
-          <span className='cartCard-item-count'> {product.count} </span>
+          <span> {product.count} </span>
           <Button onClick={addCartItem}>+</Button>
         </div>
         {!isCart && <Button variant='outline-danger' onClick={removeAllRepeatedItems}>Remove</Button>}

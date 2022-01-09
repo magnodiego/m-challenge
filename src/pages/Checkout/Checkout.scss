@@ -1,4 +1,4 @@
-.checkout-container {
+.checkout {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -11,7 +11,7 @@
     margin-bottom: 30px;
   }
 
-  .checkout-list {
+  .checkout__list__container {
     width: 80%;
   }
 }

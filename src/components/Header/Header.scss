@@ -1,6 +1,6 @@
 @import "../../styles/custom.scss";
 
-.header-container {
+.header {
   padding: 10px 30px;
   height: 90px;
   background: linear-gradient(90deg, $light-primary 0%, $light-secondary 100%);
@@ -14,7 +14,7 @@
     cursor: pointer;
   }
 
-  .header-cart-container {
+  .header__cart {
     position: relative;
     cursor: pointer;
     img {

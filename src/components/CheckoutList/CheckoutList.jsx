@@ -10,15 +10,15 @@ const CheckoutList = ({ handlePaying, isPaying, totalAmount }) => {
   const cartItems = useSelector(selectCartItems);
 
   return (
-    <div className='checkout-list-container'>
+    <div className='checkout__list'>
       <h5 className='text-uppercase'>Items</h5>
-      <div className='checkout-list-products-contaier'>
+      <div className='checkout__list__products'>
         {cartItems && cartItems.length > 0 ?
           <React.Fragment>
             {cartItems.map((product, i) => 
               <CartCard product={product} key={i} />
             )}
-            <div className='checkout-list-total-container'>
+            <div className='checkout__list__total'>
               <h4>
                 {`Total: $ ${totalAmount}`}
               </h4>
@@ -28,7 +28,7 @@ const CheckoutList = ({ handlePaying, isPaying, totalAmount }) => {
             </div>
           </React.Fragment>
           :
-          <p className='checkout-list-empty'>
+          <p>
             Your cart is empty
           </p>
         }
