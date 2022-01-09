@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './FormItem.scss';
 
-const FormItem = ({ id, label, type, className, placeholder, value, error, onChange  }) => {
+const FormItem = ({ id, label, type, className, placeholder, max, min, value, error, onChange  }) => {
   
   const handleChange = (e) => {
     onChange(id, e.target.value);
@@ -20,6 +20,8 @@ const FormItem = ({ id, label, type, className, placeholder, value, error, onCha
         placeholder={placeholder}
         onChange={handleChange}
         value={value}
+        maxLength={max}
+        minLength={min}
       />
       {error && <span className='form__item__span error'> {error} </span>}
     </div>
@@ -35,6 +37,8 @@ FormItem.propTypes = {
   value: PropTypes.string || PropTypes.number,
   error: PropTypes.string,
   onChange: PropTypes.func,
+  max: PropTypes.number,
+  min: PropTypes.number,
 };
 
 export default FormItem;

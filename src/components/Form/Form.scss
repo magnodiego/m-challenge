@@ -1,3 +1,5 @@
+@import "../../styles/custom.scss";
+
 .form {
   width: 80%;
   margin: 40px 0;
@@ -20,6 +22,16 @@
     display: flex;
     flex-direction: column;
     margin: 10px;
+
+    .form__body__cardInfo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      @media only screen and (max-width: $m-breakpoint) {
+        display: flex;
+        flex-direction: column;
+      }
+    }
   }
 
   button {
