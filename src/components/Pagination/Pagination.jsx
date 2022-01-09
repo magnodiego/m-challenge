@@ -1,14 +1,12 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { selectItemsPerPage, selectPage } from '../../store/pagination/selector';
 import { selectProducts } from '../../store/products/selector';
 import { Pagination } from 'react-bootstrap';
 import './Pagination.scss';
-import { setPage, nextPage, previousPage } from '../../store/pagination/actions';
 import PaginationItem from '../PaginationItem/PaginationItem';
 
 const PaginationHandler = () => {
-  const dispatch = useDispatch();
   const currentPage = useSelector(selectPage);
   const products = useSelector(selectProducts);
   const itemsPerPage = useSelector(selectItemsPerPage);
@@ -30,9 +28,6 @@ const PaginationHandler = () => {
 
     return pages;
   }, [products, itemsPerPage, currentPage]);
-
-
-
 
   return (
     <div className='pagination-container'>
